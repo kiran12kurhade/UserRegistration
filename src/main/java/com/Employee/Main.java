@@ -17,6 +17,12 @@ public class Main {
         return email.matches(emailRegex);
     }
 
+    public static boolean isValidMobileNumber(String mobileNumber) {
+        // Regular expression to validate the mobile number format "91 9919819801"
+        String mobileRegex = "^91\\s[0-9]{10}$";
+        return mobileNumber.matches(mobileRegex);
+    }
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -46,6 +52,16 @@ public class Main {
             System.out.println("Email is valid.");
         } else {
             System.out.println("Email is invalid. Ensure it follows the format: abc.xyz@bl.co.in");
+        }
+
+
+        System.out.println("Enter a valid mobile number (format: 91 9919819801):");
+        String mobileNumber = scanner.nextLine();
+
+        if (isValidMobileNumber(mobileNumber)) {
+            System.out.println("Mobile number is valid.");
+        } else {
+            System.out.println("Mobile number is invalid. It should follow the format: 91 9919819801.");
         }
 
 
