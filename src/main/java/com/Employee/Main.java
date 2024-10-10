@@ -23,6 +23,7 @@ public class Main {
     }
     // Rule1: Password should be a minimum of 8 characters
     // Rule2: Password should have at least 1 uppercase letter
+    // Rule3: Password should have at least 1 numeric digit
     public static boolean isValidPassword(String password) {
         // Check if password length is at least 8
         if (password.length() < 8) {
@@ -31,14 +32,19 @@ public class Main {
 
         // Check if password contains at least one uppercase letter
         boolean hasUpperCase = false;
+        boolean hasNumber = false;
+
         for (char c : password.toCharArray()) {
             if (Character.isUpperCase(c)) {
                 hasUpperCase = true;
-                break;
+            }
+            if (Character.isDigit(c)) {
+                hasNumber = true;
             }
         }
 
-        return hasUpperCase;
+        // Return true only if both uppercase and numeric checks are passed
+        return hasUpperCase && hasNumber;
     }
 
     public static void main(String[] args) {
@@ -82,14 +88,15 @@ public class Main {
             System.out.println("Mobile number is invalid. It should follow the format: 91 9919819801.");
         }
 
-        System.out.println("Enter a password (minimum 8 characters, at least 1 uppercase letter):");
+        System.out.println("Enter a password (minimum 8 characters, at least 1 uppercase letter, and at least 1 numeric digit):");
         String password = scanner.nextLine();
 
         if (isValidPassword(password)) {
             System.out.println("Password is valid.");
         } else {
-            System.out.println("Password is invalid. It should be at least 8 characters long and contain at least 1 uppercase letter.");
+            System.out.println("Password is invalid. It should be at least 8 characters long, contain at least 1 uppercase letter, and have at least 1 numeric digit.");
         }
+
         scanner.close();
     }
         
