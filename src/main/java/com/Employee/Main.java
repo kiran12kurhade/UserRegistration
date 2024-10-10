@@ -16,11 +16,13 @@ public class Main {
         String emailRegex = "^[a-zA-Z0-9]{3,}(\\.[a-zA-Z0-9]{3,})?@[a-zA-Z0-9]{2,}\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2})?$";
         return email.matches(emailRegex);
     }
-
     public static boolean isValidMobileNumber(String mobileNumber) {
         // Regular expression to validate the mobile number format "91 9919819801"
         String mobileRegex = "^91\\s[0-9]{10}$";
         return mobileNumber.matches(mobileRegex);
+    }
+    public static boolean isValidPassword(String password) {
+        return password.length() >= 8;
     }
 
     public static void main(String[] args) {
@@ -64,6 +66,14 @@ public class Main {
             System.out.println("Mobile number is invalid. It should follow the format: 91 9919819801.");
         }
 
+        System.out.println("Enter a password (minimum 8 characters):");
+        String password = scanner.nextLine();
+
+        if (isValidPassword(password)) {
+            System.out.println("Password is valid.");
+        } else {
+            System.out.println("Password is invalid. It should be at least 8 characters long.");
+        }
 
         scanner.close();
     }
