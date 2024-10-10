@@ -21,8 +21,24 @@ public class Main {
         String mobileRegex = "^91\\s[0-9]{10}$";
         return mobileNumber.matches(mobileRegex);
     }
+    // Rule1: Password should be a minimum of 8 characters
+    // Rule2: Password should have at least 1 uppercase letter
     public static boolean isValidPassword(String password) {
-        return password.length() >= 8;
+        // Check if password length is at least 8
+        if (password.length() < 8) {
+            return false;
+        }
+
+        // Check if password contains at least one uppercase letter
+        boolean hasUpperCase = false;
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUpperCase = true;
+                break;
+            }
+        }
+
+        return hasUpperCase;
     }
 
     public static void main(String[] args) {
@@ -66,15 +82,14 @@ public class Main {
             System.out.println("Mobile number is invalid. It should follow the format: 91 9919819801.");
         }
 
-        System.out.println("Enter a password (minimum 8 characters):");
+        System.out.println("Enter a password (minimum 8 characters, at least 1 uppercase letter):");
         String password = scanner.nextLine();
 
         if (isValidPassword(password)) {
             System.out.println("Password is valid.");
         } else {
-            System.out.println("Password is invalid. It should be at least 8 characters long.");
+            System.out.println("Password is invalid. It should be at least 8 characters long and contain at least 1 uppercase letter.");
         }
-
         scanner.close();
     }
         
